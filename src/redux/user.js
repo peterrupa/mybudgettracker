@@ -6,7 +6,8 @@ import Immutable from 'seamless-immutable';
 const { Types, Creators } = createActions({
     requestWhoAmI: null,
     setUser: ['user'],
-    clearUser: null
+    clearUser: null,
+    requestLogout: null
 });
 
 export const UserTypes = Types;

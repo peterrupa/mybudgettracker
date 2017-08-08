@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Route } from 'react-router';
 import { Link } from 'react-router-dom';
 
+import Settings from '../Settings';
+
 import './style.css';
 
 class Home extends Component {
@@ -37,7 +39,7 @@ class Home extends Component {
 
                 <Route exact path="/home" render={() => <div>Dashboard</div>}/>
                 <Route exact path="/home/myday" render={() => <div>My Day</div>}/>
-                <Route path="/home/settings" render={() => <div>Settings</div>}/>
+                <Route path="/home/settings" component={Settings}/>
             </div>
         );
     }

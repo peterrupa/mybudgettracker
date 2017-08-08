@@ -15,7 +15,8 @@ const create = (baseURL = API_URL) => {
     });
 
     return {
-        whoami: () => api.get('/auth')
+        whoami: () => api.get('/auth'),
+        logout: () => api.post('/auth/logout')
     };
 };
 

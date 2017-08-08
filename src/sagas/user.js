@@ -17,3 +17,11 @@ export function* whoami(api) {
         yield put(AppActions.startApp());
     }
 }
+
+export function* logout(api) {
+    const response = yield call(api.logout);
+
+    if (response.ok) {
+        yield put(UserActions.clearUser());
+    }
+}
