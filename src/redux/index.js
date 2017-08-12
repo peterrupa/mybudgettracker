@@ -5,7 +5,7 @@ import createSagaMiddleware from 'redux-saga';
 import { persistentStore } from 'redux-pouchdb-plus';
 
 import rootSaga from '../sagas';
-import { userDB } from '../db';
+import db from '../db';
 
 export const history = createHistory();
 
@@ -17,7 +17,7 @@ const configureStore = (rootReducer, rootSaga) => {
     const composeFunctions = [
         applyMiddleware(middleware),
         applyMiddleware(sagaMiddleware),
-        persistentStore({ db: userDB }),
+        persistentStore({ db: db.userDB }),
         window.__REDUX_DEVTOOLS_EXTENSION__ &&
             window.__REDUX_DEVTOOLS_EXTENSION__()
     ];

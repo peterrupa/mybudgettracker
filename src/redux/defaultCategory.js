@@ -1,7 +1,7 @@
 import { createReducer } from 'reduxsauce';
 import { persistentReducer } from 'redux-pouchdb-plus';
 
-import { defaultCategoriesDB } from '../db';
+import db from '../db';
 
 /* ------------- Types and Action Creators ------------- */
 
@@ -22,5 +22,5 @@ Object.defineProperty(defaultCategory, 'name', {
 });
 
 export const reducer = persistentReducer(defaultCategory, {
-    db: defaultCategoriesDB
+    db: db.defaultCategoriesDB
 });
