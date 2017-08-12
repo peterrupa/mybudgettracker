@@ -7,7 +7,15 @@
   },
   "dependencies": {
     "apisauce": "^0.14.0",
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.4.1",
+    "eslint-plugin-react": "^7.2.0",
     "history": "^4.6.3",
+    "husky": "^0.14.3",
+    "immutable": "^3.8.1",
+    "lint-staged": "^4.0.3",
+    "pouchdb-browser": "^6.3.4",
+    "prettier": "^1.5.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
@@ -15,14 +23,26 @@
     "react-router-dom": "^4.1.2",
     "react-router-redux": "^5.0.0-alpha.6",
     "redux": "^3.7.2",
+    "redux-pouchdb-plus": "^0.8.1",
     "redux-saga": "^0.15.6",
-    "reduxsauce": "^0.6.0",
-    "seamless-immutable": "^7.1.2"
+    "reduxsauce": "^0.6.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint -c .eslintrc.json 'src/**/*.js'",
+    "fixcode": "eslint -c .eslintrc.json --fix 'src/**/*.js'",
+    "precommit": "lint-staged",
+    "prepush": "lint-staged",
+    "prettify": "prettier --tab-width 4 --single-quote --write \"./src/**/*.js\""
+  },
+  "lint-staged": {
+    "*[^.min].js": [
+      "prettier --tab-width 4 --single-quote --write",
+      "git add",
+      "npm run lint"
+    ]
   }
 }

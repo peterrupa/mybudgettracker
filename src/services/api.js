@@ -1,6 +1,6 @@
 import apisauce from 'apisauce';
 
-const API_URL = 'http://localhost:8000';
+const API_URL = 'http://dev.mybudgettracker.com:8000';
 
 // @TODO: make ENV for base URL
 const create = (baseURL = API_URL) => {

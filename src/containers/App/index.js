@@ -25,14 +25,14 @@ class App extends Component {
         const { isStarted } = this.props.app;
 
         if (!isStarted) {
-            return (<Loading/>);
+            return <Loading />;
         }
 
         return (
             <ConnectedRouter history={history}>
                 <div>
-                    <Route exact path="/" component={Login}/>
-                    <Route path="/home" component={Home}/>
+                    <Route exact path="/" component={Login} />
+                    <Route path="/home" component={Home} />
                 </div>
             </ConnectedRouter>
         );
@@ -47,7 +47,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        requestWhoAmI: () => { dispatch(UserActions.requestWhoAmI()) }
+        requestWhoAmI: () => {
+            dispatch(UserActions.requestWhoAmI());
+        }
     };
 };
 

@@ -1,5 +1,4 @@
 import { createReducer, createActions } from 'reduxsauce';
-import Immutable from 'seamless-immutable';
 
 /* ------------- Types and Action Creators ------------- */
 
@@ -15,15 +14,21 @@ export default Creators;
 
 /* ------------- Initial State ------------- */
 
-export const INITIAL_STATE = Immutable({
+export const INITIAL_STATE = {
     user: null
-});
+};
 
 /* ------------- Reducers ------------- */
 
-export const setUser = (state, { user }) => state.merge({ user });
+export const setUser = (state, { user }) => ({
+    ...state,
+    user
+});
 
-export const clearUser = state => state.merge({ user: null });
+export const clearUser = state => ({
+    ...state,
+    user: null
+});
 
 /* ------------- Hookup Reducers To Types ------------- */
 

@@ -11,7 +11,7 @@ class Settings extends Component {
 
         // @TODO: loading indicator
         requestLogout();
-    }
+    };
 
     render() {
         const { logout } = this;
@@ -24,14 +24,15 @@ class Settings extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-    };
+const mapStateToProps = () => {
+    return {};
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        requestLogout: () => { dispatch(UserActions.requestLogout()) }
+        requestLogout: () => {
+            dispatch(UserActions.requestLogout());
+        }
     };
 };
 

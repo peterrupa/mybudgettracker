@@ -4,6 +4,7 @@ import { Route } from 'react-router';
 import { Link } from 'react-router-dom';
 
 import Settings from '../Settings';
+import { sync } from '../../db';
 
 import './style.css';
 
@@ -30,6 +31,14 @@ class Home extends Component {
         checkUser(user);
     }
 
+    componentDidMount() {
+        // initialize DB sync
+
+        const remoteURL = this.props.user.user.session.userDBs.db;
+
+        sync(remoteURL);
+    }
+
     render() {
         return (
             <div className="Home">
@@ -37,9 +46,13 @@ class Home extends Component {
                 <Link to="/home/myday">My Day</Link>
                 <Link to="/home/settings">Settings</Link>
 
-                <Route exact path="/home" render={() => <div>Dashboard</div>}/>
-                <Route exact path="/home/myday" render={() => <div>My Day</div>}/>
-                <Route path="/home/settings" component={Settings}/>
+                <Route exact path="/home" render={() => <div>Dashboard</div>} />
+                <Route
+                    exact
+                    path="/home/myday"
+                    render={() => <div>My Day</div>}
+                />
+                <Route path="/home/settings" component={Settings} />
             </div>
         );
     }
@@ -51,9 +64,8 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-    };
+const mapDispatchToProps = () => {
+    return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

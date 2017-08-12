@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import './style.css';
 
+// @TODO: hardcoded url
+
 class Login extends Component {
     checkUser = user => {
         const { push } = this.props.history;
@@ -29,7 +31,9 @@ class Login extends Component {
     render() {
         return (
             <div className="Login">
-                <a href="http://localhost:8000/auth/google">Sign in with Google</a>
+                <a href="http://dev.mybudgettracker.com:8000/auth/google">
+                    Sign in with Google
+                </a>
             </div>
         );
     }
@@ -41,9 +45,8 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-    };
+const mapDispatchToProps = () => {
+    return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
