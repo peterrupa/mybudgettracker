@@ -38,6 +38,7 @@ export default () => {
         user: require('./user').reducer,
         transaction: require('./transaction').reducer,
         defaultCategory: require('./defaultCategory').reducer,
+        browser: require('./browser').reducer,
         router: routerReducer
     });
 

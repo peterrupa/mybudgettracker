@@ -14,6 +14,10 @@ import Loading from '../../components/Loading';
 
 import './style.css';
 
+const wrapperStyle = {
+    height: '100%'
+};
+
 class App extends Component {
     componentDidMount() {
         const { requestWhoAmI } = this.props;
@@ -30,7 +34,7 @@ class App extends Component {
 
         return (
             <ConnectedRouter history={history}>
-                <div>
+                <div style={wrapperStyle}>
                     <Route exact path="/" component={Login} />
                     <Route path="/home" component={Home} />
                 </div>
