@@ -1,15 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router';
-import { Link } from 'react-router-dom';
 
 import Dashboard from '../Dashboard';
 import MyDay from '../MyDay';
 import Settings from '../Settings';
+import NavBar from '../../components/NavBar';
+import Menu from '../../components/Menu';
 
-import './style.css';
+import styleEnhancer from '../../util/styleEnhancer';
+import styles from './style';
 
 class Home extends Component {
+    state = {
+        menuIsOpen: false
+    };
+
+    openMenu = () => {
+        this.setState({
+            menuIsOpen: true
+        });
+    };
+
+    closeMenu = () => {
+        this.setState({
+            menuIsOpen: false
+        });
+    };
+
     checkUser = user => {
         const { push } = this.props.history;
 
@@ -33,15 +51,40 @@ class Home extends Component {
     }
 
     render() {
-        return (
-            <div className="Home">
-                <Link to="/home">Dashboard</Link>
-                <Link to="/home/myday">My Day</Link>
-                <Link to="/home/settings">Settings</Link>
+        const { openMenu, closeMenu } = this;
+        const { browser, history, location } = this.props;
+        const { menuIsOpen } = this.state;
+        const { size } = browser;
+        const enhancedStyle = styleEnhancer(size);
 
-                <Route exact path="/home" component={Dashboard} />
-                <Route exact path="/home/myday" component={MyDay} />
-                <Route path="/home/settings" component={Settings} />
+        return (
+            <div className="Home" style={styles.wrapper}>
+                <NavBar
+                    location={location}
+                    browser={browser}
+                    menuIsOpen={menuIsOpen}
+                    openMenu={openMenu}
+                    closeMenu={closeMenu}
+                />
+
+                <div style={styles.bottomPart}>
+                    <Menu
+                        browser={browser}
+                        open={menuIsOpen}
+                        closeMenu={closeMenu}
+                        history={history}
+                    />
+                    <div style={enhancedStyle(styles.contentContainer)}>
+                        <Route
+                            exact
+                            path="/home"
+                            component={Dashboard}
+                            title="Dashboard"
+                        />
+                        <Route exact path="/home/myday" component={MyDay} />
+                        <Route path="/home/settings" component={Settings} />
+                    </div>
+                </div>
             </div>
         );
     }
@@ -49,7 +92,8 @@ class Home extends Component {
 
 const mapStateToProps = state => {
     return {
-        user: state.user
+        user: state.user,
+        browser: state.browser
     };
 };
 

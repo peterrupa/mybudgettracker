@@ -1,10 +1,10 @@
 export default function(size) {
-    return function(style) {
+    return function(style, force) {
         const {
             shared = {},
             mobile = {},
-            tablet = mobile,
-            desktop = tablet
+            tablet = force ? {} : mobile,
+            desktop = force ? {} : tablet
         } = style;
         const deviceStyle =
             size === 'MOBILE' ? mobile : size === 'TABLET' ? tablet : desktop;

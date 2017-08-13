@@ -4,6 +4,7 @@ html, body, #root {
     font-family: Roboto;
     color: white;
     height: 100vh;
+    overflow: hidden;
 }
 
 div {

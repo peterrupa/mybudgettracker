@@ -1,5 +1,7 @@
 import PouchDB from 'pouchdb-browser';
 
+import { store } from '../';
+import UserActions from '../redux/user';
 import DB_CONFIG from '../config/db';
 
 // Expose PouchDB for debugging
@@ -23,10 +25,16 @@ export default {
             throw new Error('UserDB is not yet initialized');
         }
 
-        this.syncInstance = this.userDB.sync(remoteURL, {
-            live: true,
-            retry: true
-        });
+        this.syncInstance = this.userDB
+            .sync(remoteURL, {
+                live: true,
+                retry: true
+            })
+            .on('error', e => {
+                if (e.status === 401) {
+                    store.dispatch(UserActions.requestLogout());
+                }
+            });
 
         return this.syncInstance;
     },
