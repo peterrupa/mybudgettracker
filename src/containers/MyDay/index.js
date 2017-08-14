@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import AddTransactionButton from '../../components/AddTransactionButton';
 import './style.css';
 
 class MyDay extends Component {
     render() {
         return (
             <div className="MyDay">
-                <h1>Tis ur day</h1>
+                <AddTransactionButton />
+                Tis ur day
             </div>
         );
     }
