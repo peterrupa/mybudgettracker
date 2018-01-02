@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import './style.css';
-
 class ResponsiveStyle extends Component {
     render() {
         const { size } = this.props.browser;

@@ -12,8 +12,6 @@ import Login from '../Login';
 
 import Loading from '../../components/Loading';
 
-import './style.css';
-
 const wrapperStyle = {
     height: '100%'
 };
