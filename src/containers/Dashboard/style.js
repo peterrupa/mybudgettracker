@@ -11,7 +11,28 @@ export default {
             justifyContent: 'space-between'
         },
         mobile: {
-            flexDirection: 'column'
+            flexDirection: 'column-reverse'
         }
+    },
+    chart: {
+        shared: {
+            width: '100%'
+        },
+        desktop: {
+            height: '275px',
+            marginTop: '-4em'
+        },
+        mobile: {
+            marginTop: '-3em',
+            height: '200px'
+        }
+    },
+    watermark: {
+        top: 'initial',
+        bottom: '50px',
+        color: 'white',
+        opacity: '0.6',
+        fontFamily: 'Roboto',
+        fontWeight: '300'
     }
 };

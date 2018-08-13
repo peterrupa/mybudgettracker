@@ -6,11 +6,11 @@ export default {
             display: 'flex'
         },
         mobile: {
-            marginTop: '2em',
+            marginBottom: '1em',
             justifyContent: 'space-between'
         },
         desktop: {
-            marginTop: '0',
+            marginBottom: '0',
             justifyContent: 'initial'
         }
     },
